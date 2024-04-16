@@ -5,7 +5,9 @@
       "templates": [
         {
           "name": "SeasonalThemes",
-          "parameters": ["Languages", "Emotional Appeal"]
+          "parameters": ["Languages", "Emotional Appeal"],
+          "description": "Sample Seasonal theme template",
+          "prompt_text": "Sample prompt text"
         }
       ]
     },
@@ -14,7 +16,53 @@
       "templates": [
         {
           "name": "Character Design",
-          "parameters": ["Languages", "Emotional Appeal", "Gender", "Eye Color", "Eye Shape", "Hair Color"]
+          "parameters": ["Languages", "Emotional Appeal", "Gender", "Eye Color", "Eye Shape", "Hair Color"],
+          "description": "Sample Seasonal theme template",
+          "prompt_text": "Sample prompt text"
+        }
+      ]
+    },
+    {
+      "name": "Customer Interactions",
+      "templates": [
+        {
+          "name": "Customer Service Email",
+          "parameters": ["Languages", "ToneOfVoice"],
+          "description": ["Sample Email For Customer Interaction"],
+          "prompt_text": "Sample prompt text",
+          "input_fields": {
+            "CustomerEmail": {
+              "type": "textarea",
+              "label": "Customer Email",
+              "placeholder": "Enter the customer's email here...",
+              "size": "large"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Marketing",
+      "templates": [
+        {
+          "name": "Marketing Calendar",
+          "parameters": ["Languages", "ToneOfVoice"],
+          "description": ["Sample Email For Marketing Calendar"],
+          "prompt_text": "Sample prompt text",
+          "input_fields": {
+            "EmailsperWeek": {
+              "type": "textbox",
+              "label": "Emails Per Week",
+              "placeholder": "Number of emails per week",
+              "size": "small"
+            },
+            "NumberOfMonths": {
+              "type": "textbox",
+              "label": "Number of Months",
+              "placeholder": "Number of months to plan",
+              "size": "small"
+            }
+          }
         }
       ]
     }

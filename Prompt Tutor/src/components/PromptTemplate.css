@@ -19,3 +19,36 @@
     display: flex;
     gap: 20px;
   }
+
+  .input-fields-container {
+    display: flex;
+    margin-top: 2rem;
+  }
+  
+  .input-field {
+    margin-bottom: 1rem; /* Space between fields */
+  }
+
+  .input-field label {
+    margin: 0.3rem; /* Space between label and input */
+  }
+
+  .input-textbox, .input-textarea {
+    width: 100%; 
+    padding: 0.5em;
+    margin: 0.5rem; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    box-sizing: border-box; 
+  }
+  
+  .input-small {
+    max-width: 250px; 
+  }
+  
+  .input-large {
+    width: 400px;
+    background: white;
+  }
+  
+  
