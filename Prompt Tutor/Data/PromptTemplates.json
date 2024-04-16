@@ -1,0 +1,22 @@
+{
+  "categories": [
+    {
+      "name": "Ideation",
+      "templates": [
+        {
+          "name": "SeasonalThemes",
+          "parameters": ["Languages", "Emotional Appeal"]
+        }
+      ]
+    },
+    {
+      "name": "Design",
+      "templates": [
+        {
+          "name": "Character Design",
+          "parameters": ["Languages", "Emotional Appeal", "Gender", "Eye Color", "Eye Shape", "Hair Color"]
+        }
+      ]
+    }
+  ]
+}
