@@ -1,0 +1,25 @@
+.Prompt-Template {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+}
+.Prompt-Template-params {
+    /* height: 100vh;
+    width: 100%; */
+    display: block;
+    padding: 0.5rem;
+    margin: 0 0.5rem;
+    /* align-items: center; */
+    /* justify-content: center; */
+    background-color: #fcfcfc;
+    /* position: relative; */
+  }
+  
+  .content {
+    position: absolute;
+    top: 50%;
+    display: flex;
+    gap: 20px;
+  }
