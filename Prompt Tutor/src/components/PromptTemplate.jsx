@@ -34,9 +34,6 @@ export const PromptTemplate = () => {
     setDynamicPromptText(text);
   };
 
-
-
-
   const handleCategoryChange = (categoryName) => {
     setSelectedCategory(categoryName);
     setSelectedTemplate({});
@@ -53,10 +50,6 @@ export const PromptTemplate = () => {
     setSelectedParameters(prev => ({ ...prev, [param]: value }));
   };
 
-  const handleInputChange = (field, value) => {
-    setInputValues(prev => ({ ...prev, [field]: value }));
-  };
-
   const categories = templatesData.categories;
   const templates = categories.find(cat => cat.name === selectedCategory)?.templates || [];
   const parameters = selectedTemplate.parameters || [];
@@ -65,46 +58,83 @@ export const PromptTemplate = () => {
     return parametersData[0][param] || [];
   };
 
-  const InputTextbox = ({ name, label, placeholder, className }) => {
-    return (
-      <div className={`input-field ${className}`}>
-        {label && <label htmlFor={name}>{label}</label>}
-        <input
-          type="text"
-          className="input-textbox"
-          id={name}
-          name={name}
-          placeholder={placeholder}
-          size="30"
-          value={inputValues[name] || ''}
-          onChange={e => handleInputChange(name, e.target.value)}
-        />
-      </div>
-    );
-  };
+  const updateGlobalInput = (field, value) => {
+    setInputValues(prev => ({ ...prev, [field]: value }));
+    updatePromptText();
+};
 
-  const InputTextarea = ({ name, label, placeholder, className }) => {
+
+  const InputTextbox = ({ name, label, placeholder, className, updateGlobalInput }) => {
+    const [localValue, setLocalValue] = useState(inputValues[name] || '');
+
+    const handleBlur = () => {
+        updateGlobalInput(name, localValue);
+    };
+
+    const handleKeyDown = (e) => {
+        if (e.key === "Enter" || e.key === "Tab") {
+            e.preventDefault();
+            updateGlobalInput(name, localValue);
+        }
+    };
+
     return (
-      <div className={`input-field ${className}`}>
-        {label && <label htmlFor={name}>{label}</label>}
-        <textarea
-          className="input-textarea"
-          id={name}
-          name={name}
-          placeholder={placeholder}
-          rows="4"
-          cols="100"
-          value={inputValues[name] || ''}
-          onChange={e => handleInputChange(name, e.target.value)}
-        />
-      </div>
+        <div className={`input-field ${className}`}>
+            {label && <label htmlFor={name}>{label}</label>}
+            <input
+                type="text"
+                className="input-textbox"
+                id={name}
+                name={name}
+                placeholder={placeholder}
+                size="30"
+                value={localValue}
+                onChange={e => setLocalValue(e.target.value)}
+                onBlur={handleBlur}
+                onKeyDown={handleKeyDown}
+            />
+        </div>
     );
-  };
+};
+
+const InputTextarea = ({ name, label, placeholder, className, updateGlobalInput }) => {
+    const [localValue, setLocalValue] = useState(inputValues[name] || '');
+
+    const handleBlur = () => {
+        updateGlobalInput(name, localValue);
+    };
+
+    const handleKeyDown = (e) => {
+        if (e.key === "Enter" || e.key === "Tab") {
+            e.preventDefault();
+            updateGlobalInput(name, localValue);
+        }
+    };
+
+    return (
+        <div className={`input-field ${className}`}>
+            {label && <label htmlFor={name}>{label}</label>}
+            <textarea
+                className="input-textarea"
+                id={name}
+                name={name}
+                placeholder={placeholder}
+                rows="4"
+                cols="100"
+                value={localValue}
+                onChange={e => setLocalValue(e.target.value)}
+                onBlur={handleBlur}
+                onKeyDown={handleKeyDown}
+            />
+        </div>
+    );
+};
+
 
   const [showTooltip, setShowTooltip] = useState(false);
 
   const handleCopyToClipboard = () => {
-    navigator.clipboard.writeText(selectedTemplate.prompt_text).then(() => {
+    navigator.clipboard.writeText(dynamicPromptText).then(() => {
       setShowTooltip(true);
       setTimeout(() => setShowTooltip(false), 2000);
     }, (err) => {
@@ -161,6 +191,7 @@ export const PromptTemplate = () => {
                       label={field.label}
                       placeholder={field.placeholder}
                       className={`input-${field.size}`}
+                      updateGlobalInput={updateGlobalInput}
                     />
                   ))}
               </div>
@@ -174,6 +205,7 @@ export const PromptTemplate = () => {
                       label={field.label}
                       placeholder={field.placeholder}
                       className={`input-${field.size}`}
+                      updateGlobalInput={updateGlobalInput}
                     />
                   ))}
               </div>
@@ -190,7 +222,7 @@ export const PromptTemplate = () => {
               />
 
               <button onClick={handleCopyToClipboard} className="copy-button">Copy Prompt</button>
-              {showTooltip && <div className="tooltip">Copied to clipboard!</div>}
+              {showTooltip && <div class="tooltip">Copied to clipboard!</div>}
             </div>
           )}
         </div>

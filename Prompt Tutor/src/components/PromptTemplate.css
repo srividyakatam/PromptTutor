@@ -97,3 +97,15 @@
 .copy-button:hover {
   background-color: #0056b3;
 }
+
+.tooltip {
+  position: 'absolute';
+  top: '0';
+  right: '0';
+  background: 'black';
+  color: 'white';
+  padding: '4px 8px';
+  border-radius: '4px';
+  font-size: '12px';
+  color: #1d4ed8;
+}
