@@ -27,9 +27,9 @@
       "templates": [
         {
           "name": "Customer Service Follow-Up Email",
-          "parameters": ["Languages", "ToneOfVoice", "Writing Style", "Your Role"],
+          "parameters": ["Languages", "Tone Of Voice", "Writing Style", "Your Role"],
           "description": ["Sample Email For Customer Interaction"],
-          "prompt_text": "Please ignore all previous instructions. Please respond only in the English language. You are a .   Do not self reference. Do not explain what you are doing. Acknowledge the customer's issue or question, provide a helpful solution or response, and offer additional assistance or follow-up if needed. Write a 100-word follow-up email about the following issue/question: ",
+          "prompt_text": "Please ignore all previous instructions. Please respond only in the {Languages} language. You are a {Your Role}. You have a {Tone Of Voice} tone of voice. You have a {Writing Style} writing style. Do not self reference. Do not explain what you are doing. Acknowledge the customer's issue or question, provide a helpful solution or response, and offer additional assistance or follow-up if needed. Write a 100-word follow-up email about the following issue/question: {Customer Email}",
           "input_fields": {
             "CustomerEmail": {
               "type": "textarea",
@@ -46,7 +46,7 @@
       "templates": [
         {
           "name": "Marketing Calendar",
-          "parameters": ["Languages", "ToneOfVoice"],
+          "parameters": ["Languages", "Tone Of Voice"],
           "description": ["Sample Email For Marketing Calendar"],
           "prompt_text": "Sample prompt text",
           "input_fields": {
@@ -61,6 +61,44 @@
               "label": "Number of Months",
               "placeholder": "Number of months to plan",
               "size": "small"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Sales Copy",
+      "templates": [
+        {
+          "name": "Product Description Generator",
+          "parameters": ["Languages", "Tone Of Voice", "Writing Style"],
+          "description": ["Template for generating product descriptions"],
+          "prompt_text": "Please ignore all previous instructions. Please respond only in the {Languages} language. You are an E-commerce SEO expert copywriter who writes product descriptions that compel users to purchase the products. You have a {Tone Of Voice} tone of voice. You have a {Writing Style} writing style. Do not self reference. Do not explain what you are doing. In this task, you will craft a compelling product description for an e-commerce item that I will provide. Your goal is to create three unique content sections for the product description, each focusing on a different set of relevant keywords. Be sure to label each section with an eye-catching subheading that accurately summarizes its content. Your product description should be keyword-rich, informative, and engaging, with a word count of under {Total Words} words. Your objective is to use emotional language and creative reasoning to persuade potential buyers to purchase the product. Once you have written the product description, please create a bulleted list of {Total Headings} possible H1 headings for the product page. Provide a bulleted list of {Total Keywords} broad match keywords that you used to create the product description. To further enhance the product page marketing appeal, create a persuasive and professional sounding meta title and description that incorporates similar language to that of the new product summary. The meta title should be between 50 and 60 characters long. The meta description should be between 140 to 150 characters long. This is the e-commerce item - \"{Product Description}\"",
+          "input_fields": {
+            "Total Words": {
+              "type": "textbox",
+              "label": "Total Words",
+              "placeholder": "Total word count per description",
+              "size": "small"
+            },
+            "Total Headings": {
+              "type": "textbox",
+              "label": "Total Headings",
+              "placeholder": "Number of headings",
+              "size": "small"
+            }
+            ,
+            "Total Keywords": {
+              "type": "textbox",
+              "label": "Total Keywords",
+              "placeholder": "Number of keywords",
+              "size": "small"
+            },
+            "Product Description": {
+              "type": "textarea",
+              "label": "Product Description",
+              "placeholder": "Describe your product",
+              "size": "large"
             }
           }
         }

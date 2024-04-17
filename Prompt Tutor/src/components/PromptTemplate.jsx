@@ -67,7 +67,7 @@ export const PromptTemplate = () => {
     <>
       <div className="Prompt-Template">
         <div className="Prompt-Template-params">
-        {selectedTemplate.description && (
+          {selectedTemplate.description && (
             <div className="template-description">
               <label>{selectedTemplate.description}</label>
             </div>
@@ -99,21 +99,36 @@ export const PromptTemplate = () => {
               } />
             ))}
           </div>
+
           {selectedTemplate.input_fields && (
-            <div className="input-fields-container">
-              {Object.entries(selectedTemplate.input_fields).map(([key, field]) => {
-                const FieldComponent = field.type === "textarea" ? InputTextarea : InputTextbox;
-                return (
-                  <FieldComponent
-                    key={key}
-                    name={key}
-                    label={field.label}
-                    placeholder={field.placeholder}
-                    className={`input-${field.size}`}
-                  />
-                );
-              })}
-            </div>
+            <>
+              <div className="input-fields-textbox-container">
+                {Object.entries(selectedTemplate.input_fields)
+                  .filter(([key, field]) => field.type === "textbox")
+                  .map(([key, field]) => (
+                    <InputTextbox
+                      key={key}
+                      name={key}
+                      label={field.label}
+                      placeholder={field.placeholder}
+                      className={`input-${field.size}`}
+                    />
+                  ))}
+              </div>
+              <div className="input-fields-textarea-container">
+                {Object.entries(selectedTemplate.input_fields)
+                  .filter(([key, field]) => field.type === "textarea")
+                  .map(([key, field]) => (
+                    <InputTextarea
+                      key={key}
+                      name={key}
+                      label={field.label}
+                      placeholder={field.placeholder}
+                      className={`input-${field.size}`}
+                    />
+                  ))}
+              </div>
+            </>
           )}
 
           {selectedTemplate.prompt_text && (

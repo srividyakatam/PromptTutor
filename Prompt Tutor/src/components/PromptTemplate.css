@@ -2,8 +2,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: sticky;
-  top: 0;
+  position: absolute;
+  /* top: 0; */
 }
 
 .Prompt-Template-params {
@@ -23,13 +23,17 @@
   gap: 20px;
 }
 
-.input-fields-container {
+.input-fields-textbox-container {
   display: flex;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
+.input-fields-textarea-container {
+  display: flex;
+  margin-top: 0.3rem;
+}
 .input-field {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   /* Space between fields */
 }
 
@@ -61,12 +65,12 @@
 }
 
 .template-container {
-  margin-top: 20px;
+  margin-top: 0.5rem;
 }
 
 .template-container label {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 0.3rem;
 }
 
 .template {
@@ -81,7 +85,7 @@
 }
 
 .copy-button {
-  margin-top: 10px;
+  margin-top: 0.3rem;
   padding: 10px 20px;
   background-color: #1d4ed8;
   color: white;
