@@ -38,7 +38,7 @@ export const PromptTemplate = () => {
     return (
       <div className={`input-field ${className}`}>
         {label && <label htmlFor={name}>{label}</label>}
-        <input type="text" id={name} name={name} placeholder={placeholder} size="30"/>
+        <input type="text" className="input-textbox" id={name} name={name} placeholder={placeholder} size="30" />
       </div>
     );
   };
@@ -47,17 +47,32 @@ export const PromptTemplate = () => {
     return (
       <div className={`input-field ${className}`}>
         {label && <label htmlFor={name}>{label}</label>}
-        <textarea id={name} name={name} placeholder={placeholder} rows="4" cols="100"/>
+        <textarea className="input-textarea" id={name} name={name} placeholder={placeholder} rows="4" cols="100" />
       </div>
     );
+  };
+
+  const [showTooltip, setShowTooltip] = useState(false);
+
+  const handleCopyToClipboard = () => {
+    navigator.clipboard.writeText(selectedTemplate.prompt_text).then(() => {
+      setShowTooltip(true);
+      setTimeout(() => setShowTooltip(false), 2000);
+    }, (err) => {
+      console.error('Error copying prompt: ', err);
+    });
   };
 
   return (
     <>
       <div className="Prompt-Template">
         <div className="Prompt-Template-params">
+        {selectedTemplate.description && (
+            <div className="template-description">
+              <label>{selectedTemplate.description}</label>
+            </div>
+          )}
           <div className="content">
-
             <Dropdown buttonText={selectedCategory || "Category"} content={
               categories.map(cat => (
                 <DropdownItem key={cat.name} onClick={() => handleCategoryChange(cat.name)}>
@@ -92,12 +107,25 @@ export const PromptTemplate = () => {
                   <FieldComponent
                     key={key}
                     name={key}
-                    label={field.label} // Assuming you've added label in your JSON structure
+                    label={field.label}
                     placeholder={field.placeholder}
                     className={`input-${field.size}`}
                   />
                 );
               })}
+            </div>
+          )}
+
+          {selectedTemplate.prompt_text && (
+            <div className="template-container">
+              <label>Prompt Text</label>
+              <textarea
+                readOnly
+                value={selectedTemplate.prompt_text}
+                className="template"
+              />
+              <button onClick={handleCopyToClipboard} className="copy-button">Copy Prompt</button>
+              {showTooltip && <div className="tooltip">Copied to clipboard!</div>}
             </div>
           )}
         </div>

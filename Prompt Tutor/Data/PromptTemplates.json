@@ -17,7 +17,7 @@
         {
           "name": "Character Design",
           "parameters": ["Languages", "Emotional Appeal", "Gender", "Eye Color", "Eye Shape", "Hair Color"],
-          "description": "Sample Seasonal theme template",
+          "description": "Sample Character Design template",
           "prompt_text": "Sample prompt text"
         }
       ]
@@ -26,15 +26,15 @@
       "name": "Customer Interactions",
       "templates": [
         {
-          "name": "Customer Service Email",
-          "parameters": ["Languages", "ToneOfVoice"],
+          "name": "Customer Service Follow-Up Email",
+          "parameters": ["Languages", "ToneOfVoice", "Writing Style", "Your Role"],
           "description": ["Sample Email For Customer Interaction"],
-          "prompt_text": "Sample prompt text",
+          "prompt_text": "Please ignore all previous instructions. Please respond only in the English language. You are a .   Do not self reference. Do not explain what you are doing. Acknowledge the customer's issue or question, provide a helpful solution or response, and offer additional assistance or follow-up if needed. Write a 100-word follow-up email about the following issue/question: ",
           "input_fields": {
             "CustomerEmail": {
               "type": "textarea",
               "label": "Customer Email",
-              "placeholder": "Enter the customer's email here...",
+              "placeholder": "Write a follow up email about the in-person meeting we have had last week and let them know you are available to answer any questions they may have.",
               "size": "large"
             }
           }
