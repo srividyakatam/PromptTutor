@@ -31,7 +31,7 @@
           "description": ["Sample Email For Customer Interaction"],
           "prompt_text": "Please ignore all previous instructions. Please respond only in the {Languages} language. You are a {Your Role}. You have a {Tone Of Voice} tone of voice. You have a {Writing Style} writing style. Do not self reference. Do not explain what you are doing. Acknowledge the customer's issue or question, provide a helpful solution or response, and offer additional assistance or follow-up if needed. Write a 100-word follow-up email about the following issue/question: {Customer Email}",
           "input_fields": {
-            "CustomerEmail": {
+            "Customer Email": {
               "type": "textarea",
               "label": "Customer Email",
               "placeholder": "Write a follow up email about the in-person meeting we have had last week and let them know you are available to answer any questions they may have.",

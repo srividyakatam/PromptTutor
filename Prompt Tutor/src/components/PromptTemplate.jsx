@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./PromptTemplate.css";
 import Dropdown from "./Dropdown/Dropdown";
 import DropdownItem from "./DropdownItem/DropdownItem";
@@ -10,6 +10,32 @@ export const PromptTemplate = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedTemplate, setSelectedTemplate] = useState({});
   const [selectedParameters, setSelectedParameters] = useState({});
+  const [dynamicPromptText, setDynamicPromptText] = useState("");
+
+  const [inputValues, setInputValues] = useState({});
+  // Update input values state when template changes
+  useEffect(() => {
+    updatePromptText();
+  }, [selectedParameters, inputValues]);
+
+  const updatePromptText = () => {
+    let text = selectedTemplate.prompt_text || "";
+
+    // Replace parameters placeholders
+    Object.entries(selectedParameters).forEach(([param, value]) => {
+      text = text.replace(new RegExp(`{${param}}`, 'g'), value || `{${param}}`);
+    });
+
+    // Replace input fields placeholders
+    Object.entries(inputValues).forEach(([key, value]) => {
+      text = text.replace(new RegExp(`{${key}}`, 'g'), value || `{${key}}`);
+    });
+
+    setDynamicPromptText(text);
+  };
+
+
+
 
   const handleCategoryChange = (categoryName) => {
     setSelectedCategory(categoryName);
@@ -20,10 +46,15 @@ export const PromptTemplate = () => {
   const handleTemplateChange = (template) => {
     setSelectedTemplate(template);
     setSelectedParameters({});
+    updatePromptText();
   };
 
   const handleParameterChange = (param, value) => {
     setSelectedParameters(prev => ({ ...prev, [param]: value }));
+  };
+
+  const handleInputChange = (field, value) => {
+    setInputValues(prev => ({ ...prev, [field]: value }));
   };
 
   const categories = templatesData.categories;
@@ -38,7 +69,16 @@ export const PromptTemplate = () => {
     return (
       <div className={`input-field ${className}`}>
         {label && <label htmlFor={name}>{label}</label>}
-        <input type="text" className="input-textbox" id={name} name={name} placeholder={placeholder} size="30" />
+        <input
+          type="text"
+          className="input-textbox"
+          id={name}
+          name={name}
+          placeholder={placeholder}
+          size="30"
+          value={inputValues[name] || ''}
+          onChange={e => handleInputChange(name, e.target.value)}
+        />
       </div>
     );
   };
@@ -47,7 +87,16 @@ export const PromptTemplate = () => {
     return (
       <div className={`input-field ${className}`}>
         {label && <label htmlFor={name}>{label}</label>}
-        <textarea className="input-textarea" id={name} name={name} placeholder={placeholder} rows="4" cols="100" />
+        <textarea
+          className="input-textarea"
+          id={name}
+          name={name}
+          placeholder={placeholder}
+          rows="4"
+          cols="100"
+          value={inputValues[name] || ''}
+          onChange={e => handleInputChange(name, e.target.value)}
+        />
       </div>
     );
   };
@@ -136,9 +185,10 @@ export const PromptTemplate = () => {
               <label>Prompt Text</label>
               <textarea
                 readOnly
-                value={selectedTemplate.prompt_text}
+                value={dynamicPromptText || selectedTemplate.prompt_text}
                 className="template"
               />
+
               <button onClick={handleCopyToClipboard} className="copy-button">Copy Prompt</button>
               {showTooltip && <div className="tooltip">Copied to clipboard!</div>}
             </div>
