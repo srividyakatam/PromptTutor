@@ -1,5 +1,5 @@
 import React from "react";
-import "./PromptLibrary.css";
+import "../Styles/PromptLibrary.css";
 import { Card } from "../Card/Card";
 import promptLibrary from "../../../Data/PromptLibrary.json";
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./PromptTemplate.css";
+import "../Styles/PromptTemplate.css";
 import Dropdown from "../Dropdown/Dropdown";
 import DropdownItem from "../DropdownItem/DropdownItem";
 import templatesData from "../../../Data/PromptTemplates.json";

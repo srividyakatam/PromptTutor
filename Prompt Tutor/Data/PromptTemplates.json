@@ -15,10 +15,24 @@
       "name": "Design",
       "templates": [
         {
-          "name": "Character Design",
-          "parameters": ["Languages", "Emotional Appeal", "Gender", "Eye Color", "Eye Shape", "Hair Color"],
-          "description": "Sample Character Design template",
-          "prompt_text": "Sample prompt text"
+          "name": "Digital Sticker Design",
+          "parameters": ["Emotional Appeal", "Animal", "Medium", "Art Style", "Color Palette"],
+          "description": "Plug and play template to design Digital Stickers",
+          "prompt_text": "Create a digital sticker of {Emotional Appeal} {Animal} {Additional Details} in {Art Style} art style using {Medium} as medium in {Color Palette} Color palette. Generate only one image on transparent background.",
+          "input_fields": {
+            "Additional Details": {
+              "type": "textarea",
+              "label": "Additional Details",
+              "placeholder": "Provide additional details lke dancing in the rain, at a carnival",
+              "size": "large"
+            }
+          }
+        },
+        {
+          "name": "Seamless Pattern Design",
+          "parameters": ["Subject 1", "Subject 2", "Form", "Art Style2", "Color Palette"],
+          "description": "Plug and play template to design seamless patterns for your next project",
+          "prompt_text": "Create a print-ready seamless pattern using {Subject 1} and {Subject 2} in a {Form} {Color Palette} color palette in a {Art Style2} style."
         }
       ]
     },
@@ -61,6 +75,20 @@
               "label": "Number of Months",
               "placeholder": "Number of months to plan",
               "size": "small"
+            }
+          }
+        },
+        {
+          "name": "Brand Strategies Generator",
+          "parameters": ["Languages", "Brand Strategy", "Industry", "Brand Values", "Identity Type", "Target Audience"],
+          "description": ["Template for generating product descriptions"],
+          "prompt_text": "Develop a {Brand Strategy} brand strategy for my {Industry} business by defining {Brand Values1} and {Brand Values2}, establishing {Identity Type1} and {Identity Type2} visula identity, and creating messaging to resonate with {Target Audience1} and {Target Audience2}.{Additional Input}",
+          "input_fields": {
+            "Additional Input": {
+              "type": "textarea",
+              "label": "Additional Input",
+              "placeholder": "Add additional details to describe your brand like we provide: safe and engaging activities or convinient financial solutions..",
+              "size": "large"
             }
           }
         }
