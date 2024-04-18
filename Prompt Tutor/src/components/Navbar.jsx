@@ -17,9 +17,9 @@ export const Navbar = () => {
         <span></span>
       </div>
       <ul className={menuOpen ? "open" : ""}>
-        <li>
+        {/* <li>
           <NavLink to="/About">About</NavLink>
-        </li>
+        </li> */}
         <li>
           <NavLink to="/PromptLibrary">PromptLibrary</NavLink>
         </li>
