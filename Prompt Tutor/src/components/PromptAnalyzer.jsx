@@ -101,7 +101,7 @@ export const PromptAnalyzer = () => {
                 return <Message key={i} model={message} />
               })}
             </MessageList>
-            <MessageInput placeholder="Type message here" onSend={handleSend} />
+            <MessageInput placeholder="Type message here" attachButton={false} onSend={handleSend} />
           </ChatContainer>
         </MainContainer>
       </div>
