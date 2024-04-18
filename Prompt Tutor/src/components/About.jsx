@@ -1,5 +1,14 @@
 import React from "react";
+import "./About.css";
 
 export const About = () => {
-  return <h1>About</h1>;
+  
+  return (
+    <>
+      <div className="About">
+        
+      </div>
+      
+    </>
+  );
 };
