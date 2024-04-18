@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./PromptTemplate.css";
-import Dropdown from "./Dropdown/Dropdown";
-import DropdownItem from "./DropdownItem/DropdownItem";
-import templatesData from "../../Data/PromptTemplates.json";
-import parametersData from "../../Data/PromptParameters.json";
+import Dropdown from "../Dropdown/Dropdown";
+import DropdownItem from "../DropdownItem/DropdownItem";
+import templatesData from "../../../Data/PromptTemplates.json";
+import parametersData from "../../../Data/PromptParameters.json";
 
 
 export const PromptTemplate = () => {

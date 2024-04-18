@@ -1,7 +1,7 @@
 import React from "react";
 import "./PromptLibrary.css";
-import { Card } from "./Card";
-import promptLibrary from "../../Data/PromptLibrary.json";
+import { Card } from "../Card/Card";
+import promptLibrary from "../../../Data/PromptLibrary.json";
 
 export const PromptLibrary = () => {
   const promptsData = promptLibrary.prompts;
