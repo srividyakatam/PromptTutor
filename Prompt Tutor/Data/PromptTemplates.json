@@ -80,7 +80,7 @@
         },
         {
           "name": "Brand Strategies Generator",
-          "parameters": ["Languages", "Brand Strategy", "Industry", "Brand Values", "Identity Type", "Target Audience"],
+          "parameters": ["Brand Strategy", "Industry", "Brand Values1", "Brand Values2", "Identity Type1","Identity Type2", "Target Audience1", "Target Audience2"],
           "description": ["Template for generating product descriptions"],
           "prompt_text": "Develop a {Brand Strategy} brand strategy for my {Industry} business by defining {Brand Values1} and {Brand Values2}, establishing {Identity Type1} and {Identity Type2} visula identity, and creating messaging to resonate with {Target Audience1} and {Target Audience2}.{Additional Input}",
           "input_fields": {

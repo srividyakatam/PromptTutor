@@ -6,14 +6,14 @@ import { MainContainer, ChatContainer, MessageList, Message, MessageInput, Typin
 
 const API_KEY = "your_api_key";
 
-const systemMessage = { //  Explain things like you're talking to a software professional with 5 years of experience.
-  "role": "system", "content": "Explain things like you're talking to a software professional with 2 years of experience."
+const systemMessage = {
+  "role": "system", "content": "You are an expert at crafting effective prompts and train others to achieve the same. For each prompt given to you, analyze the prompt for clarity, specificity and any potential baises. If a prompt is biased, reject the prompt saying you do not support biased prompts. Give any useful guidance and tips for the users to improve."
 }
 
 export const PromptAnalyzer = () => {
   const [messages, setMessages] = useState([
     {
-      message: "Hello, I'm ChatGPT! Ask me anything!",
+      message: "Hello, I'm ChatGPT trained on tutoring Prompting Techniques! Ask me your anything related to crafting perfect prompts!",
       sentTime: "just now",
       direction: 'incoming',
       sender: "ChatGPT"
